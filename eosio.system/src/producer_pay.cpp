@@ -4,7 +4,7 @@
 
 namespace eosiosystem {
 
-    const uint32_t daily_rate = 13698630;          // 5% annual rate
+    const uint32_t daily_rate = 136986300000;          // 5% annual rate
     const uint32_t blocks_per_year = 52 * 7 * 24 * 2 * 3600;   // half seconds per year
     const uint32_t seconds_per_year = 52 * 7 * 24 * 3600;
     const uint32_t blocks_per_day = 2 * 24 * 3600;
