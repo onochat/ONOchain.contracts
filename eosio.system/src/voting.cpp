@@ -213,18 +213,6 @@ namespace eosiosystem {
       eosio_assert( voter != _voters.end(), "user must stake before they can vote" ); /// staking creates voter object
       eosio_assert( !proxy || !voter->is_proxy, "account registered as a proxy is not allowed to use a proxy" );
 
-      /**
-       * The first time someone votes we calculate and set last_vote_weight, since they cannot unstake until
-       * after total_activated_stake hits threshold, we can use last_vote_weight to determine that this is
-       * their first vote and should consider their stake activated.
-       */
-      if( voter->last_vote_weight <= 0.0 ) {
-         _gstate.total_activated_stake += voter->staked;
-         if( _gstate.total_activated_stake >= min_activated_stake && _gstate.thresh_activated_stake_time == time_point() ) {
-            _gstate.thresh_activated_stake_time = current_time_point();
-         }
-      }
-
       auto new_vote_weight = stake2vote( voter->staked );
       if( voter->is_proxy ) {
          new_vote_weight += voter->proxied_vote_weight;

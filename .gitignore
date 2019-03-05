@@ -33,3 +33,10 @@
 
 build/*
 .DS_Store
+.idea
+cmake-build-debug
+.idea/vcs.xml
+.idea/ONOchain.contracts.iml
+.idea/modules.xml
+.idea/misc.xml
+.idea/misc.xml
