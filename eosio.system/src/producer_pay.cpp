@@ -4,11 +4,11 @@
 
 namespace eosiosystem {
 
-    const uint32_t daily_rate = 136986300000;          // 5% annual rate
-    const uint32_t blocks_per_year = 52 * 7 * 24 * 2 * 3600;   // half seconds per year
-    const uint32_t seconds_per_year = 52 * 7 * 24 * 3600;
-    const uint32_t blocks_per_day = 2 * 24 * 3600;
+    const uint32_t daily_rate = 136986300000;          // 5B annual rate increase
+    const uint32_t seconds_per_year = 365 * 24 * 3600; 	//  365 is more accurate than 52*7. Does not account for leap year.
+    const uint32_t blocks_per_year = seconds_per_year * 2 ;   // half seconds per year
     const uint32_t blocks_per_hour = 2 * 3600;
+    const uint32_t blocks_per_day = blocks_per_hour * 24 ;
     const int64_t useconds_per_day = 24 * 3600 * int64_t(1000000);
     const int64_t useconds_per_year = seconds_per_year * 1000000ll;
 
@@ -90,7 +90,7 @@ namespace eosiosystem {
             auto to_op_fund = (new_tokens * 5) / 100;
 
             // 10% user behaviour
-            auto to_user_fund = (new_tokens * 5) / 100;
+            auto to_user_fund = (new_tokens * 10) / 100;
 
 
             INLINE_ACTION_SENDER(eosio::token, issue)(
